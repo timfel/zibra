@@ -1,0 +1,66 @@
+#!/bin/bash
+
+# general config
+
+. /etc/conf.d/fastcgi
+. /etc/rc.conf
+. /etc/rc.d/functions
+
+# global varaibles
+declare PIDS
+FILES=$(find $VHOSTS -name \*\.conf)
+
+
+case "$1" in
+  start)
+  stat_busy "Starting FastCGI Server"
+  for file in $FILES
+  do
+    . $file
+
+    if [ $LANGUAGE = 'python' ] && [ $FLAMEWORK = 'django' ] ; then
+      cd $ROOT_DIR
+      python manage.py runfcgi host=$IP port=$FCGI_PORT --settings=settings
+      pidof -s python >> $PIDFILE
+    elif [ $LANGUAGE = 'php' ] && [ $FLAMEWORK = 'none' ] ; then
+      cgi-fcgi -start -connect $IP:$FCGI_PORT $PHP_CGI
+      pidof -s $PHP_CGI >> $PIDFILE
+    else
+      echo "Unknow programming language."
+      stat_fail
+    fi
+
+  done
+
+  if [ -e $PIDFILE ] ; then
+    add_daemon fastcgi
+    stat_done
+  else
+    stat_fail
+  fi
+  ;; 
+  stop)
+  stat_busy "Stopping FastCGI Server"
+  [ -e /var/run/daemons/fastcgi ] && [ -e $PIDFILE ]
+  PIDS=`cat $PIDFILE`
+  for pid in $PIDS
+  do
+    kill  $pid &> /dev/null
+  done
+
+  if [ $? -ne 0 ] ; then
+    stat_fail
+  else
+    rm_daemon fastcgi
+    rm $PIDFILE
+    stat_done
+  fi
+  ;;
+  restart)
+  $0 stop
+  sleep 1
+  $0 start
+  ;;
+  *)
+  echo "Usage: $0 {start|stop|restart|}"  
+esac

@@ -1,0 +1,162 @@
+I: Bus=0017 Vendor=0001 Product=0001 Version=0100
+N: Name="Macintosh mouse button emulation"
+P: Phys=
+S: Sysfs=/devices/virtual/input/input0
+U: Uniq=
+H: Handlers=mouse0 event0 
+B: EV=7
+B: KEY=70000 0 0 0 0 0 0 0 0
+B: REL=3
+
+I: Bus=0011 Vendor=0001 Product=0001 Version=ab41
+N: Name="AT Translated Set 2 keyboard"
+P: Phys=isa0060/serio0/input0
+S: Sysfs=/devices/platform/i8042/serio0/input/input1
+U: Uniq=
+H: Handlers=kbd event1 
+B: EV=120013
+B: KEY=4 2000000 3803078 f800d001 feffffdf ffefffff ffffffff fffffffe
+B: MSC=10
+B: LED=7
+
+I: Bus=0003 Vendor=3353 Product=3713 Version=0110
+N: Name="HID 3353:3713"
+P: Phys=usb-0000:00:1d.0-1/input0
+S: Sysfs=/devices/pci0000:00/0000:00:1d.0/usb5/5-1/5-1:1.0/input/input2
+U: Uniq=
+H: Handlers=kbd mouse1 event2 
+B: EV=120017
+B: KEY=1f0000 10000 7 ff98007a 4007ff febeffdf ffefffff ffffffff fffffffe
+B: REL=3
+B: MSC=10
+B: LED=1f
+
+I: Bus=0003 Vendor=3353 Product=3713 Version=0110
+N: Name="HID 3353:3713"
+P: Phys=usb-0000:00:1d.0-1/input1
+S: Sysfs=/devices/pci0000:00/0000:00:1d.0/usb5/5-1/5-1:1.1/input/input3
+U: Uniq=
+H: Handlers=kbd event3 
+B: EV=13
+B: KEY=1838 5801c004 1e0000 0 0 0
+B: MSC=10
+
+I: Bus=0010 Vendor=001f Product=0001 Version=0100
+N: Name="PC Speaker"
+P: Phys=isa0061/input0
+S: Sysfs=/devices/platform/pcspkr/input/input4
+U: Uniq=
+H: Handlers=kbd event4 
+B: EV=40001
+B: SND=6
+
+I: Bus=0019 Vendor=0000 Product=0001 Version=0000
+N: Name="Power Button"
+P: Phys=LNXPWRBN/button/input0
+S: Sysfs=/devices/LNXSYSTM:00/LNXPWRBN:00/input/input5
+U: Uniq=
+H: Handlers=kbd event5 
+B: EV=3
+B: KEY=100000 0 0 0
+
+I: Bus=0019 Vendor=0000 Product=0005 Version=0000
+N: Name="Lid Switch"
+P: Phys=PNP0C0D/button/input0
+S: Sysfs=/devices/LNXSYSTM:00/device:00/PNP0C0D:00/input/input6
+U: Uniq=
+H: Handlers=event6 
+B: EV=21
+B: SW=1
+
+I: Bus=0019 Vendor=0000 Product=0001 Version=0000
+N: Name="Power Button"
+P: Phys=PNP0C0C/button/input0
+S: Sysfs=/devices/LNXSYSTM:00/device:00/PNP0C0C:00/input/input7
+U: Uniq=
+H: Handlers=kbd event7 
+B: EV=3
+B: KEY=100000 0 0 0
+
+I: Bus=0019 Vendor=0000 Product=0003 Version=0000
+N: Name="Sleep Button"
+P: Phys=PNP0C0E/button/input0
+S: Sysfs=/devices/LNXSYSTM:00/device:00/PNP0C0E:00/input/input8
+U: Uniq=
+H: Handlers=kbd event8 
+B: EV=3
+B: KEY=4000 0 0 0 0
+
+I: Bus=0019 Vendor=0000 Product=0006 Version=0000
+N: Name="Video Bus"
+P: Phys=/video/input0
+S: Sysfs=/devices/LNXSYSTM:00/device:00/PNP0A08:00/device:02/device:03/input/input9
+U: Uniq=
+H: Handlers=kbd event9 
+B: EV=3
+B: KEY=3f000b 0 0 0 0 0 0 0
+
+I: Bus=0011 Vendor=0002 Product=0008 Version=0000
+N: Name="PS/2 Mouse"
+P: Phys=isa0060/serio1/input1
+S: Sysfs=/devices/platform/i8042/serio1/input/input10
+U: Uniq=
+H: Handlers=mouse2 event10 
+B: EV=7
+B: KEY=70000 0 0 0 0 0 0 0 0
+B: REL=3
+
+I: Bus=0011 Vendor=0002 Product=0008 Version=7321
+N: Name="AlpsPS/2 ALPS GlidePoint"
+P: Phys=isa0060/serio1/input0
+S: Sysfs=/devices/platform/i8042/serio1/input/input11
+U: Uniq=
+H: Handlers=mouse3 event11 
+B: EV=f
+B: KEY=420 0 70000 0 0 0 0 0 0 0 0
+B: REL=3
+B: ABS=1000003
+
+I: Bus=0001 Vendor=10ec Product=0262 Version=0001
+N: Name="HDA Digital PCBeep"
+P: Phys=card0/codec#0/beep0
+S: Sysfs=/devices/pci0000:00/0000:00:1b.0/input/input12
+U: Uniq=
+H: Handlers=kbd event12 
+B: EV=40001
+B: SND=6
+
+I: Bus=0003 Vendor=056a Product=0065 Version=0116
+N: Name="Wacom Bamboo"
+P: Phys=
+S: Sysfs=/devices/pci0000:00/0000:00:1d.7/usb2/2-3/2-3.1/2-3.1:1.0/input/input13
+U: Uniq=
+H: Handlers=mouse4 event13 
+B: EV=1f
+B: KEY=1c63 0 70033 0 0 0 0 0 0 0 0
+B: REL=100
+B: ABS=100 3000103
+B: MSC=1
+
+I: Bus=0003 Vendor=04fc Product=05d8 Version=0100
+N: Name="MLK RAPOO 8200"
+P: Phys=usb-0000:00:1d.7-3.4/input0
+S: Sysfs=/devices/pci0000:00/0000:00:1d.7/usb2/2-3/2-3.4/2-3.4:1.0/input/input14
+U: Uniq=
+H: Handlers=kbd event14 
+B: EV=120013
+B: KEY=10000 7 ff9f207a c14057ff febeffdf ffefffff ffffffff fffffffe
+B: MSC=10
+B: LED=1f
+
+I: Bus=0003 Vendor=04fc Product=05d8 Version=0100
+N: Name="MLK RAPOO 8200"
+P: Phys=usb-0000:00:1d.7-3.4/input1
+S: Sysfs=/devices/pci0000:00/0000:00:1d.7/usb2/2-3/2-3.4/2-3.4:1.1/input/input15
+U: Uniq=
+H: Handlers=kbd mouse5 event15 
+B: EV=1f
+B: KEY=837fff 2c3027 bf004444 0 0 1f0001 f84 8a27c000 667bfa d941dfed 9e0000 0 0 0
+B: REL=1c3
+B: ABS=1 0
+B: MSC=10
+

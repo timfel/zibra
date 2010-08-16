@@ -1,0 +1,7 @@
+Vim syntax and color theme file specifically for python.
+
+caravaggio.vim: color theme file
+python.vim: python syntax file
+
+caravaggio.vim   --->   $VIMRUNTIME/colors/
+python.vim       --->   $VIMRUNTIME/syntax/

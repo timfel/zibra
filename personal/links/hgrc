@@ -1,0 +1,22 @@
+[ui]
+username = kuno <neokuno@gmail.com>
+verbose = True
+
+[auth]
+bb.prefix = bitbucket.org
+bb.username = kuno
+bb.password = 1980222107
+bb.schemes = http https
+
+gc.prefix = code.google.com
+gc.username = neokuno
+gc.password = QN8eh4aN8Nz4
+gc.schemes = http https
+
+[extensions]
+hgext.convert =
+hgext.extdiff =
+prompt = /home/kuno/code/repository/hg-prompt/prompt.py
+
+[extdiff]
+cmd.meld =  meld

@@ -1,0 +1,180 @@
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""" Vim Settings  """""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" This is the setting file for Vim/GVim
+" Creator: Guan "kuno" Qing <neokuno@gmail.com>
+" Created: Dec 31, 2009
+" Last edited: Dec 31, 2009
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -----------------------------------------------------------------------------
+"  Functions
+"  ----------------------------------------------------------------------------
+" -----------------------------------------------------------------------------
+" GUI Settings
+" -----------------------------------------------------------------------------
+" Disable toolbar and menubar and right-side scroll-bar"
+set guioptions-=m
+set guioptions-=T
+set guioptions-=r
+set guioptions-=L
+
+" Font and color scheme
+" for GUI mode
+if has("gui_running")
+
+  " Font setting for GUI mode
+  set guifont=Monaco\ 13.6
+
+  " Color scheme for GUI mode
+  colorscheme caravaggio
+
+endif
+
+" Highlight 80 columns
+:au BufWinEnter * let w:m1=matchadd('Search', '\%<81v.\%>77v', -1)
+:au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+
+" -----------------------------------------------------------------------------
+" Basic Functionality
+"------------------------------------------------------------------------------
+set encoding=utf-8
+
+set fileencoding=utf-8
+
+" Enable syntax
+syntax on
+
+" Enable filetype
+filetype on
+
+" Enable filetype plugin
+filetype plugin on
+
+" Enable filetype indentation
+filetype indent on
+
+"
+set title
+
+"
+set noic
+
+" Show line number "
+set number
+
+" Set shift width to 2
+set shiftwidth=4
+
+" Set working directory
+set autochdir
+
+" Automatic indentation
+set autoindent
+
+" Highlight search pattern
+set hlsearch
+
+" Enable python diction 
+let g:pydiction_location='~/.vim/after/ftplugin/pydiction/complete-dict'
+
+" Zen Coding
+let g:user_zen_expandabbr_key='<c-k>'
+let g:use_zen_complete_tag=1
+
+" Enable spell checking
+"set spell spl=en
+
+" -----------------------------------------------------------------------------
+" NERDTree Settings
+" -----------------------------------------------------------------------------
+"if has("gui_running") " Enable NERDTree only in GUI mode
+  "autocmd VimEnter * NERDTree
+  "autocmd VimEnter * wincmd p
+
+  " More beautiful
+  "let NERDChrismasTree=1
+  
+  " Change NERDTree DIR dynamically
+  "let NERDTreeChDirMode=2
+
+  " Ignore system backup file
+  "let NERDTreeIgnore=['\~$', '\.old$', '\.backup$', '\.orig$']
+  "let NERDTreeIgnore=['\.pyc$', '^\.(\w+)', '\.mp3$', '\.MP3$']
+
+  " Put NERDTree on the right side
+  "let NERDTreeWinPos=1
+
+  " Set NEDRTree window width
+  "let NERDTreeWinSize=24
+"endif
+
+" -----------------------------------------------------------------------------
+" Special File Type 
+" -----------------------------------------------------------------------------
+
+" Jquery
+au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
+
+" Enable json syntax
+au! BufRead,BufNewFile *.json setfiletype json
+au BufRead,BufNewFile *.go setfiletype go
+
+" Color highlighting for django template html file
+au BufRead,BufNewFile *.page setfiletype htmldjango
+au BufRead,BufNewFile *.unit setfiletype htmldjango
+
+" Better Indentation for python  file
+autocmd FileType python set complete+=k~/.vim/syntax/python isk+=.,(
+autocmd FileType python set shiftwidth=8
+autocmd FileType python set shiftwidth=4
+
+" Clojure
+let clj_want_gorilla = 1
+
+" Vala
+autocmd BufRead *.vala set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
+autocmd BufRead *.vapi set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
+au BufRead,BufNewFile *.vala            setfiletype vala
+au BufRead,BufNewFile *.vapi            setfiletype vala
+
+" Disable valadoc syntax highlight
+" "let vala_ignore_valadoc = 1
+"
+" " Enable comment strings
+" let vala_comment_strings = 1
+"
+" " Highlight space errors
+" let vala_space_errors = 1
+" " Disable trailing space errors
+" "let vala_no_trail_space_error = 1
+" " Disable space-tab-space errors
+" let vala_no_tab_space_error = 1
+"
+" " Minimum lines used for comment syncing (default 50)
+" "let vala_minlines = 120
+" -----------------------------------------------------------------------------
+" Keys Mapping 
+" -----------------------------------------------------------------------------
+
+" Switch between windows 
+nmap <C-Tab> <C-w>W
+nmap <C-S-Tab> <C-w>W
+
+" Switch between tabs
+nmap <S-Tab> <C-PageDown>
+
+" Mapping Cut and Paste to keys
+nmap <C-V> "+p
+imap <C-V> <ESC><C-V>i
+vmap <C-C> "+yy
+
+" -----------------------------------------------------------------------------
+"  Customize functionality
+"  ----------------------------------------------------------------------------
+
+" Insert current time
+iab xdate <C-r>=strftime("20%y-%m-%d %H:%M:%S")<C-i>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""" End of Settings  """"""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

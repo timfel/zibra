@@ -1,0 +1,77 @@
+
+# Check for an interactive session
+[ -z "$PS1" ] && return
+PS1='[\u@\h \W]\$ '
+
+# Use vim to browse man pages. One can use Ctrl-[ and Ctrl-t
+# to browse and return from referenced man pages. ZZ or q to quit.
+# Note initially within vim, one can goto the man page for the
+# word under the cursor by using [section_number]K.
+# Note we use bash explicitly here to support process substitution
+# which in turn suppresses the "Vim: Reading from stdin..." warning.
+#export MANPAGER='bash -c "vim -MRn -c \"set ft=man nomod nolist nospell nonu\" \
+#-c \"nm q :qa!<CR>\" -c \"nm <end> G\" -c \"nm <home> gg\"</dev/tty <(col -b)"'
+
+alias man="TERMINFO=~/.terminfo/ LESS=C TERM=mostlike PAGER=less man"
+
+# vim and gnome-terminal have support for 256 colours in fedora 8 at least
+# Note debian/ubuntu users need to install the ncurses-term package for this
+# Note this should be set in ~/.profile for Fedora startup scripts to
+# setup LS_COLORS correctly.
+export TERM=xterm-256color
+
+# Command alias
+alias ls='ls --color=auto'
+alias ll='ls -l'
+alias rd='rm -rf'
+alias ch='cd ~'
+
+alias cd1='cd ..'
+alias cd2='cd ../..'
+alias cd3='cd ../../..'
+alias cd4='cd ../../../..'
+
+alias op='gnome-open'
+alias fq='sudo /etc/rc.d/gw6c'
+alias comfile='gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=task.pdf '
+
+# Connect to remote servers
+alias localserver='sudo /etc/rc.d/nginx'
+alias music='sudo /etc/rc.d/mpd'
+
+alias neokuno='ssh 173.208.128.121' 
+alias tingdao='ssh 204.152.222.63'
+
+# Set default editor
+export EDITOR='vim'
+
+# Set up path(es)
+export PATH=$PATH:/usr/local/bin:$HOME/bin:/opt/google-appengine:/usr/share/perl5/vendor_perl/auto/share/dist/Cope
+export PATH='pwd'/depot_tools:/"$PATH"
+export PYTHONPATH=$PYTHONPATH:$HOME/http
+export PYTHONDOCS=/usr/share/doc/python/html/
+# Base on particalar django project
+#export DJANGO_SETTINGS_MODULE=amaranth.settings
+
+# Set Environnent variables for Go languare
+export GOMAXPROCS=32
+export GOROOT=$HOME/repository/go
+export GOBIN=$HOME/bin/go
+export GOARCH=386
+export GOOS=linux
+
+# Set Android SDK Environmental variables
+export SDK_ROOT=/opt/android-sdk/tools
+
+# Adjust clutter performence
+#export CLUTTER_VBLANK=none
+
+# Virtualenv
+export VIRTUALENV_USE_DISTRIBUTE=true
+#export VIRTUAL_ENV_DISABLE_PROMPT=true
+
+# pip
+export PIP_REQUIRE_VIRTUALENV=false
+export PIP_RESPECT_VIRTUALENV=true
+
+alias activate='source bin/activate'

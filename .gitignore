@@ -1,0 +1,13 @@
+*.swp
+*.~
+*.pyc
+*.gz
+*.zip
+*.rar
+*.swo
+*.swn
+src
+pka
+*gz
+*xk
+*bz2

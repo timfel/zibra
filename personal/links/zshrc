@@ -1,0 +1,117 @@
+# Path to your oh-my-zsh configuration.
+export ZSH=$HOME/.oh-my-zsh
+
+# Set to the name theme to load.
+# Look in ~/.oh-my-zsh/themes/
+export ZSH_THEME="kuno"
+
+# Set to this to use case-sensitive completion
+export CASE_SENSITIVE="true"
+
+# Comment this out to disable weekly auto-update checks
+# export DISABLE_AUTO_UPDATE="true"
+
+# Uncomment following line if you want to disable colors in ls
+# export DISABLE_LS_COLORS="true"
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Example format: plugins=(rails git textmate ruby lighthouse)
+plugins=(git)
+
+source $ZSH/oh-my-zsh.sh
+
+# Customize to your needs...
+export PATH=/bin:/usr/bin:/sbin:/usr/sbin:/opt/android-sdk/tools:/usr/share/java/apache-ant/bin:/usr/bin/perlbin/site:/usr/bin/perlbin/vendor:/usr/bin/perlbin/core:/opt/qt/bin
+
+# Use vim to browse man pages. One can use Ctrl-[ and Ctrl-t
+# to browse and return from referenced man pages. ZZ or q to quit.
+# Note initially within vim, one can goto the man page for the
+# word under the cursor by using [section_number]K.
+# Note we use bash explicitly here to support process substitution
+# which in turn suppresses the "Vim: Reading from stdin..." warning.
+#export MANPAGER='bash -c "vim -MRn -c \"set ft=man nomod nolist nospell nonu\" \
+#-c \"nm q :qa!<CR>\" -c \"nm <end> G\" -c \"nm <home> gg\"</dev/tty <(col -b)"'
+
+alias man="TERMINFO=~/.terminfo/ LESS=C TERM=mostlike PAGER=less man"
+
+# vim and gnome-terminal have support for 256 colours in fedora 8 at least
+# Note debian/ubuntu users need to install the ncurses-term package for this
+# Note this should be set in ~/.profile for Fedora startup scripts to
+# setup LS_COLORS correctly.
+export TERM=xterm-256color
+
+# Command alias
+alias ls='ls --color=auto'
+alias ll='ls -l'
+alias llm='ls -l | more'
+alias rd='rm -rf'
+alias cl='clear'
+
+alias ch='cd ~'
+alias cd1='cd ..'
+alias cd2='cd ../..'
+alias cd3='cd ../../..'
+alias cd4='cd ../../../..'
+
+alias op='gnome-open'
+alias fq='sudo /etc/rc.d/gw6c'
+alias shell='gnome-shell -r &'
+alias comfile='gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=task.pdf '
+
+# Arch daemons
+alias fq='sudo /etc/rc.d/gw6c'
+alias music='sudo /etc/rc.d/mpd'
+alias localserver='sudo /etc/rc.d/nginx'
+alias localfcgi='sudo /etc/rc.d/fastcgi'
+alias connect='sudo /etc/rc.d/networkmanager'
+
+# Connect to remote server
+alias neokuno='ssh 173.208.128.121'
+alias dish='ssh dish.prgmr.com'
+alias tingdao4us='ssh 98.142.220.21'
+
+# t
+alias t='python $HOME/code/repo/t/t.py --task-dir $HOME/tasks --list tasks'
+
+# todo.text
+export TODO_DIR='/home/kuno/tasks'
+alias todo='todo.sh'
+
+# Set default editor
+export EDITOR='vim'
+
+# Set up path(es)
+export PATH=$PATH:/usr/local/bin:$HOME/exec:/opt/google-appengine:
+export PYTHONPATH=$PYTHONPATH:$HOME/http/
+export PYTHONDOCS=/usr/share/doc/python/html/
+# Base on particalar django project
+#export DJANGO_SETTINGS_MODULE=tingdao4us.settings
+
+# Set Environnent variables for Go languare
+export GOMAXPROCS=32
+export GOROOT=$HOME/code/repository/go
+export GOBIN=$HOME/exec/go
+export GOARCH=386
+export GOOS=linux
+
+# Set Android SDK Environmental variables
+export SDK_ROOT=/opt/android-sdk/tools
+
+# Adjust clutter performence
+export CLUTTER_VBLANK=none
+
+# Virtualenvwrapper
+export WORKON_HOME=$HOME/http/apps
+source /usr/bin/virtualenvwrapper.sh
+
+# Virtualenv
+export VIRTUALENV_USE_DISTRIBUTE=true
+#export VIRTUAL_ENV_DISABLE_PROMPT=true
+
+# pip
+export PIP_REQUIRE_VIRTUALENV=false
+export PIP_RESPECT_VIRTUALENV=true
+export PIP_VIRTUALENV_BASE=$WORKON_HOME
+
+alias act='source bin/activate'
+alias deact='deactivate'

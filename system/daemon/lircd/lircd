@@ -1,0 +1,48 @@
+#!/bin/bash
+
+. /etc/rc.conf
+. /etc/rc.d/functions
+. /etc/lirc/lircd.conf
+
+PID=$(pidof -o %PPID /usr/sbin/lircd)
+case "$1" in
+  start)
+    stat_busy "Starting LIRC Daemon"
+    [ -n "$LIRC_DRIVER" ] && LIRC_EXTRAOPTS="-H $LIRC_DRIVER $LIRC_EXTRAOPTS"
+    [ -z "$PID" ] && 
+      if [ -n "$LIRC_DEVICE0" ] && [ -n "$LIRC_DEVICE1" ] ; then
+        /usr/sbin/lircd -d "$LIRC_DEVICE0" $LIRC_EXTRAOPTS $LIRC_CONFIGFILE --pidfile=/var/run/lirc/lircd0.pid --output=/var/run/lirc/lircd0  --listen
+	/usr/sbin/lircd -d "$LIRC_DEVICE1" $LIRC_EXTRAOPTS $LIRC_CONFIGFILE --pidfile=/var/run/lirc/lircd.pid  --output=/var/run/lirc/lircd   --connect=localhost:8765
+	ln -s /var/run/lirc/lircd /dev/lircd
+      else
+        /usr/sbin/lircd $LIRC_EXTRAOPTS $LIRC_CONFIGFILE --pidfile=/var/run/lirc/lircd0.pid  --output=/var/run/lirc/lircd0 --listen
+	/usr/sbin/lircd $LIRC_EXTRAOPTS $LIRC_CONFIGFILE --pidfile=/var/run/lirc/lircd.pid   --output=/var/run/lirc/lircd  --connect=localhost:8765
+	ln -s /var/run/lirc/lircd /dev/lircd
+      fi
+    if [ $? -gt 0 ]; then
+      stat_fail
+    else
+      add_daemon lircd
+      stat_done
+    fi
+    ;;
+  stop)
+    stat_busy "Stopping LIRC Daemon"
+    [ ! -z "$PID" ] && kill $PID &> /dev/null
+    if [ $? -gt 0 ]; then
+      stat_fail
+    else
+      rm_daemon lircd
+      stat_done
+      rm /dev/lircd
+    fi
+    ;;
+  restart)
+    $0 stop
+    sleep 1
+    $0 start
+    ;;
+  *)
+    echo "usage: $0 {start|stop|restart}"
+esac
+exit 0
