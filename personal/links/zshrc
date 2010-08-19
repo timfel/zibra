@@ -62,7 +62,7 @@ alias comfile='gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=task.pdf '
 alias fq='sudo /etc/rc.d/gw6c'
 alias music='sudo /etc/rc.d/mpd'
 alias localserver='sudo /etc/rc.d/nginx'
-alias localfcgi='sudo /etc/rc.d/fastcgi'
+alias localxcgi='sudo /etc/rc.d/xcgi'
 alias connect='sudo /etc/rc.d/networkmanager'
 
 # Connect to remote server

@@ -1,4 +1,0 @@
-PHP_CGI=/usr/bin/php-cgi
-FCGI_PORT=9000
-VHOSTS=/etc/fastcgi/vhosts
-PIDFILE=/var/run/fastcgi.pid

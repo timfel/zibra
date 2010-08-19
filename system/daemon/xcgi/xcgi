@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/bin/sh
 
 # general config
 
-. /etc/conf.d/fastcgi
+. /etc/conf.d/xcgi
 . /etc/rc.conf
 . /etc/rc.d/functions
 
@@ -13,17 +13,17 @@ FILES=$(find $VHOSTS -name \*\.conf)
 
 case "$1" in
   start)
-  stat_busy "Starting FastCGI Server"
+  stat_busy "Starting CGI Server"
   for file in $FILES
   do
     . $file
 
     if [ $LANGUAGE = 'python' ] && [ $FLAMEWORK = 'django' ] ; then
       cd $ROOT_DIR
-      python manage.py runfcgi host=$IP port=$FCGI_PORT --settings=settings
+      gunicorn_django settings.py -b $IP:$PORT --debug --daemon
       pidof -s python >> $PIDFILE
     elif [ $LANGUAGE = 'php' ] && [ $FLAMEWORK = 'none' ] ; then
-      cgi-fcgi -start -connect $IP:$FCGI_PORT $PHP_CGI
+      cgi-fcgi -start -connect $IP:$PORT $PHP_CGI
       pidof -s $PHP_CGI >> $PIDFILE
     else
       echo "Unknow programming language."
@@ -33,25 +33,26 @@ case "$1" in
   done
 
   if [ -e $PIDFILE ] ; then
-    add_daemon fastcgi
+    add_daemon xcgi
     stat_done
   else
     stat_fail
   fi
   ;; 
   stop)
-  stat_busy "Stopping FastCGI Server"
-  [ -e /var/run/daemons/fastcgi ] && [ -e $PIDFILE ]
+  stat_busy "Stopping CGI Server"
+  [ -e /var/run/daemons/xcgi ] && [ -e $PIDFILE ]
   PIDS=`cat $PIDFILE`
   for pid in $PIDS
   do
     kill  $pid &> /dev/null
+    #killall gunicorn_django
   done
 
   if [ $? -ne 0 ] ; then
     stat_fail
   else
-    rm_daemon fastcgi
+    rm_daemon xcgi
     rm $PIDFILE
     stat_done
   fi
