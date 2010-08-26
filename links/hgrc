@@ -16,7 +16,7 @@ gc.schemes = http https
 [extensions]
 hgext.convert =
 hgext.extdiff =
-prompt = /home/kuno/code/repository/hg-prompt/prompt.py
+prompt = /home/kuno/wharf/hg-prompt/prompt.py
 
 [extdiff]
 cmd.meld =  meld

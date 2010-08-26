@@ -1,4 +1,0 @@
-PHP_CGI=/usr/bin/php-cgi
-PORT=9000
-VHOSTS=/etc/xcgi/vhosts
-PIDFILE=/var/run/xcgi.pid

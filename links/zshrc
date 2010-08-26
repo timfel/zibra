@@ -1,3 +1,6 @@
+###############################################################################
+# Oh-my-zsh                                                                   #
+###############################################################################
 # Path to your oh-my-zsh configuration.
 export ZSH=$HOME/.oh-my-zsh
 
@@ -20,8 +23,16 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-# Customize to your needs...
-export PATH=/bin:/usr/bin:/sbin:/usr/sbin:/opt/android-sdk/tools:/usr/share/java/apache-ant/bin:/usr/bin/perlbin/site:/usr/bin/perlbin/vendor:/usr/bin/perlbin/core:/opt/qt/bin
+###############################################################################
+# System settings                                                             #
+###############################################################################
+# Set default editor
+export EDITOR='vim'
+
+# Path(es)
+export PATH=$PATH:/usr/local/bin:$HOME/exe:/opt/google-appengine
+export PYTHONPATH=$PYTHONPATH:$HOME/http/
+export PYTHONDOCS=/usr/share/doc/python/html/
 
 # Use vim to browse man pages. One can use Ctrl-[ and Ctrl-t
 # to browse and return from referenced man pages. ZZ or q to quit.
@@ -40,13 +51,25 @@ alias man="TERMINFO=~/.terminfo/ LESS=C TERM=mostlike PAGER=less man"
 # setup LS_COLORS correctly.
 export TERM=xterm-256color
 
-# Command alias
+###############################################################################
+# Command alias                                                               #
+###############################################################################
+# list directory and files
 alias ls='ls --color=auto'
 alias ll='ls -l'
 alias llm='ls -l | more'
+alias llp='ls -l | grep -i'
+
+# remove something
 alias rd='rm -rf'
 alias cl='clear'
 
+# list process
+alias pe='ps -e'
+alias peg='ps -e | grep -i'
+
+# change directory
+alias cr='cd /'
 alias ch='cd ~'
 alias cd1='cd ..'
 alias cd2='cd ../..'
@@ -55,13 +78,14 @@ alias cd4='cd ../../../..'
 
 alias op='gnome-open'
 alias fq='sudo /etc/rc.d/gw6c'
-alias shell='gnome-shell -r &'
+#alias shell='gnome-shell -r &'
+alias yt='yaourt'
 alias comfile='gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=task.pdf '
 
 # Arch daemons
 alias fq='sudo /etc/rc.d/gw6c'
 alias music='sudo /etc/rc.d/mpd'
-alias localserver='sudo /etc/rc.d/nginx'
+alias lsrv='sudo /etc/rc.d/nginx'
 alias xcgi='sudo /etc/rc.d/xcgi'
 alias connect='sudo /etc/rc.d/networkmanager'
 
@@ -70,6 +94,12 @@ alias neokuno='ssh 173.208.128.121'
 alias dish='ssh dish.prgmr.com'
 alias tingdao4us='ssh 98.142.220.21'
 
+###############################################################################
+# Application settings                                                        #
+###############################################################################
+# Django
+#export DJANGO_SETTINGS_MODULE=tingdao4us.settings # base on needs
+
 # t
 alias t='python $HOME/code/repo/t/t.py --task-dir $HOME/tasks --list tasks'
 
@@ -77,41 +107,35 @@ alias t='python $HOME/code/repo/t/t.py --task-dir $HOME/tasks --list tasks'
 export TODO_DIR='/home/kuno/tasks'
 alias todo='todo.sh'
 
-# Set default editor
-export EDITOR='vim'
-
-# Set up path(es)
-export PATH=$PATH:/usr/local/bin:$HOME/exec:/opt/google-appengine:
-export PYTHONPATH=$PYTHONPATH:$HOME/http/
-export PYTHONDOCS=/usr/share/doc/python/html/
-# Base on particalar django project
-#export DJANGO_SETTINGS_MODULE=tingdao4us.settings
-
-# Set Environnent variables for Go languare
+# Go languare
 export GOMAXPROCS=32
-export GOROOT=$HOME/code/repository/go
-export GOBIN=$HOME/exec/go
+export GOROOT=$HOME/repository/go
+export GOBIN=$HOME/exe/go
 export GOARCH=386
 export GOOS=linux
 
-# Set Android SDK Environmental variables
+# Android SDK
 export SDK_ROOT=/opt/android-sdk/tools
 
 # Adjust clutter performence
 export CLUTTER_VBLANK=none
 
 # Virtualenvwrapper
-export WORKON_HOME=$HOME/http/apps
+export WORKON_HOME=$HOME/project
 source /usr/bin/virtualenvwrapper.sh
 
 # Virtualenv
 export VIRTUALENV_USE_DISTRIBUTE=true
 #export VIRTUAL_ENV_DISABLE_PROMPT=true
+alias mkcleanenv='mkvirtualenv --no-site-package --distribute'
+alias act='source bin/activate'
+alias deact='deactivate'
 
-# pip
+# Pip
 export PIP_REQUIRE_VIRTUALENV=false
 export PIP_RESPECT_VIRTUALENV=true
 export PIP_VIRTUALENV_BASE=$WORKON_HOME
 
-alias act='source bin/activate'
-alias deact='deactivate'
+###############################################################################
+# EOF                                                                         #
+###############################################################################
