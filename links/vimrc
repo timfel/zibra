@@ -74,15 +74,21 @@ set autoindent
 " Highlight search pattern
 set hlsearch
 
+" Spell checking
+" set spell spl=en
+
+" -----------------------------------------------------------------------------
+"  Third party script
+" -----------------------------------------------------------------------------
 " Enable python diction 
-let g:pydiction_location='~/.vim/after/ftplugin/pydiction/complete-dict'
+"let g:pydiction_location='~/.vim/after/ftplugin/pydiction/complete-dict'
 
 " Zen Coding
 let g:user_zen_expandabbr_key='<c-k>'
 let g:use_zen_complete_tag=1
 
-" Enable spell checking
-"set spell spl=en
+" neocomplcache
+let g:neocomplcache_enable_at_startup = 1
 
 " -----------------------------------------------------------------------------
 " NERDTree Settings

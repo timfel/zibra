@@ -54,6 +54,9 @@ export TERM=xterm-256color
 ###############################################################################
 # Command alias                                                               #
 ###############################################################################
+# exit
+alias e='exit'
+
 # list directory and files
 alias ls='ls --color=auto'
 alias ll='ls -l'
@@ -76,11 +79,12 @@ alias cd2='cd ../..'
 alias cd3='cd ../../..'
 alias cd4='cd ../../../..'
 
+# misc
 alias op='gnome-open'
 alias fq='sudo /etc/rc.d/gw6c'
 #alias shell='gnome-shell -r &'
 alias yt='yaourt'
-alias comfile='gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=task.pdf '
+alias comfile='gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=task.pdf'
 
 # Arch daemons
 alias fq='sudo /etc/rc.d/gw6c'
