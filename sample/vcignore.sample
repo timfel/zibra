@@ -1,4 +1,5 @@
-syntax: glob
+# Uncomment beneth line, when in git.
+# syntax: glob
 bin/*
 lib/*
 lib64
